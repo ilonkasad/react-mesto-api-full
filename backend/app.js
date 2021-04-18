@@ -19,8 +19,8 @@ const { PORT = 3000 } = process.env;
 const options = {
   origin: [
     'http://localhost:3000',
-    'https://ваш-домен',
-    'https://your-name-of.github.io',
+    'https:////domainname.student.ilona.nomoredomains.monster/api',
+    'https://ilonkasad.github.io',
   ],
   credentials: true, // эта опция позволяет устанавливать куки
 };
@@ -36,29 +36,6 @@ app.use('*', cors(options));
 app.use(bodyParser.json());
 
 app.use(requestLogger);
-
-app.post(
-  '/signin',
-  celebrate({
-    body: Joi.object()
-      .keys({
-        email: Joi.string().required().email()
-          .messages({
-            'string.email': 'Некорректный адрес почты',
-            'string.empty': 'Не указан адрес почты',
-            'any.required': 'Адрес почты обязателен для заполнения',
-          }),
-        password: Joi.string().required().min(8)
-          .messages({
-            'string.min': 'Пароль должен содержать минимум 8 символов',
-            'string.empty': 'Не указан пароль',
-            'any.required': 'Пароль обязателен для заполнения',
-          }),
-      })
-      .unknown(true),
-  }),
-  login,
-);
 
 app.post(
   '/signup',
@@ -98,6 +75,29 @@ app.post(
       .unknown(true),
   }),
   createProfile,
+);
+
+app.post(
+  '/signin',
+  celebrate({
+    body: Joi.object()
+      .keys({
+        email: Joi.string().required().email()
+          .messages({
+            'string.email': 'Некорректный адрес почты',
+            'string.empty': 'Не указан адрес почты',
+            'any.required': 'Адрес почты обязателен для заполнения',
+          }),
+        password: Joi.string().required().min(8)
+          .messages({
+            'string.min': 'Пароль должен содержать минимум 8 символов',
+            'string.empty': 'Не указан пароль',
+            'any.required': 'Пароль обязателен для заполнения',
+          }),
+      })
+      .unknown(true),
+  }),
+  login,
 );
 
 app.use(auth);
