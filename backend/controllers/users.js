@@ -12,15 +12,12 @@ const MONGO_DUPLICATE_ERR_CODE = 11000;
 
 const login = (req, res, next) => {
   const { email, password } = req.body;
-  console.log(req.body);
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      console.log('вошли!');
       const token = jwt.sign(
         { _id: user._id },
         NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
       );
-      console.log(`token=${token}`);
       res.cookie('jwt', token, { httpOnly: true });
       res.send({ token });
     })
@@ -70,7 +67,6 @@ const getMeProfile = (req, res, next) => {
 };
 
 const createProfile = (req, res, next) => {
-  console.log(req.body);
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => User.create({

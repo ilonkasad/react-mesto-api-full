@@ -8,7 +8,6 @@ module.exports = (req, res, next) => {
   if (!authorization) {
     return res.status(401).send({ message: 'Необходима авторизация' });
   }
-
   const token = authorization.replace('Bearer ', '');
   let payload;
 
