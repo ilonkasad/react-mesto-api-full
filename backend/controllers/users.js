@@ -50,6 +50,8 @@ const getProfile = (req, res, next) => {
     .catch(next);
 };
 const getMeProfile = (req, res, next) => {
+  console.log(req);
+  console.log(req.user._id);
   User.findById(req.user._id)
     .then((user) => {
       if (user === null) {
