@@ -1,0 +1,10 @@
+.popup__btn-close_type_view{
+    margin: 0px 5px -10px 0;
+    position: static;
+}
+
+@media screen and (max-width: 1024px) {   
+    .popup__btn-close_type_view {
+        margin: 0;
+    }
+}

@@ -1,0 +1,21 @@
+.elements {
+    max-width: 882;
+    display: grid;
+    margin: 0 auto;
+    align-items: center;
+    grid-template-columns: repeat(3, 282px);
+    grid-auto-rows: 354px; 
+    row-gap: 18px;
+    column-gap: 21px;
+    padding-top: 50px;
+    padding-bottom: 66px;
+}
+
+@media screen and (max-width: 1024px) {   
+    .elements {
+        max-width: calc(100% - (19px*2));
+        grid-template-columns: repeat(1, 288px);
+        padding: 0 19px 48px 19px;
+        gap: 20px;  
+    }
+}
