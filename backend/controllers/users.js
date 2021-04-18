@@ -70,6 +70,7 @@ const getMeProfile = (req, res, next) => {
 };
 
 const createProfile = (req, res, next) => {
+  console.log(req.body);
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => User.create({

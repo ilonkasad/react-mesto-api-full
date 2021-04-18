@@ -11,14 +11,6 @@ const {
 router.get('/users', getUsers);
 router.get('/users/me', getMeProfile);
 
-router.get('/users/:_id', celebrate({
-  params: Joi.object().keys({
-    _id: Joi.string().required().length(24).messages({
-      'string.length': 'некорректная длина id',
-    }),
-  }).unknown(true),
-}), getProfile);
-
 router.patch(
   '/users/me',
   celebrate({
@@ -41,6 +33,14 @@ router.patch(
   }),
   updateProfile,
 );
+
+router.get('/users/:_id', celebrate({
+  params: Joi.object().keys({
+    _id: Joi.string().required().length(24).messages({
+      'string.length': 'некорректная длина id',
+    }),
+  }).unknown(true),
+}), getProfile);
 
 router.patch(
   '/users/me/avatar',
