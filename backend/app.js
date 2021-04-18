@@ -19,7 +19,7 @@ const { PORT = 3000 } = process.env;
 const options = {
   origin: [
     'http://localhost:3000',
-    'https://domainname.student.ilona.nomoredomains.monster/api',
+    'http://api.domainname.ilona.nomoredomains.monster',
     'https://ilonkasad.github.io',
   ],
   credentials: true, // эта опция позволяет устанавливать куки
