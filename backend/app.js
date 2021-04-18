@@ -19,13 +19,13 @@ const { PORT = 3000 } = process.env;
 const options = {
   origin: [
     'http://localhost:3000',
-    'https:////domainname.student.ilona.nomoredomains.monster/api',
+    'https://domainname.student.ilona.nomoredomains.monster/api',
     'https://ilonkasad.github.io',
   ],
   credentials: true, // эта опция позволяет устанавливать куки
 };
 
-mongoose.connect('mongodb://localhost:27017/mestodb', {
+mongoose.connect('mongodb://84.252.128.195/api:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
