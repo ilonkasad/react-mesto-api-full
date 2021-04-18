@@ -25,7 +25,7 @@ const options = {
   credentials: true, // эта опция позволяет устанавливать куки
 };
 
-mongoose.connect('mongodb://84.252.128.195/api:27017/mestodb', {
+mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
