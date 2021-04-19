@@ -1,0 +1,11 @@
+.elements__element {
+    width: 282px;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #FFFFFF;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    
+
+}
+

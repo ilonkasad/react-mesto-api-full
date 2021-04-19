@@ -1,0 +1,8 @@
+.elements__group {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    border-radius: 0 0 10px 10px;
+    max-width: 85%;
+    margin: 0 auto;
+}
