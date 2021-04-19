@@ -1,8 +1,9 @@
 # Проект Mesto фронтенд + бэкенд
 
-## IP-адрес сервера : 84.252.128.195
+IP-адрес сервера : 84.252.128.195
 
-## Домен: http://domainname.student.ilona.nomoredomains.monster/
+Домен: http://domainname.student.ilona.nomoredomains.monster/
+Домен ip: http://api.domainname.ilona.nomoredomains.monster/
 
 ## Описание
 

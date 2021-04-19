@@ -22,7 +22,7 @@ routerCrd.post(
             'string.max': 'Наименование должно содержать менее 30 символов',
             'string.empty': 'Не указано наименование карточки',
           }),
-        link: Joi.string().required()
+        link: Joi.string().pattern(new RegExp(/(http|https):\/\/(www\.)?(\S+)\.([a-zA-Z])+(\/)?(\w-\._~:\/\?#\[\]@!\$&’\(\)\*\+,;=)?/))
           .messages({
             'string.empty': 'Не указана ссылка для карточки',
           }),
@@ -37,9 +37,9 @@ routerCrd.delete(
   celebrate({
     params: Joi.object()
       .keys({
-        _id: Joi.string().required().length(24).messages({
-          'string.length': 'некорректная длина id',
-        }),
+        _id: Joi.string().required().hex().message(
+          'некорректная длина id',
+        ),
       })
       .unknown(true),
   }),
@@ -47,11 +47,11 @@ routerCrd.delete(
 );
 
 routerCrd.put(
-  '/cards/likes/:_id/',
+  '/cards/:_id/likes',
   celebrate({
     params: Joi.object()
       .keys({
-        _id: Joi.string().required().length(24).messages({
+        _id: Joi.string().required().hex().messages({
           'string.length': 'некорректная длина id',
         }),
       })
@@ -61,11 +61,11 @@ routerCrd.put(
 );
 
 routerCrd.delete(
-  '/cards/likes/:_id/',
+  '/cards/:_id/likes',
   celebrate({
     params: Joi.object()
       .keys({
-        _id: Joi.string().required().length(24).messages({
+        _id: Joi.string().required().hex().messages({
           'string.length': 'некорректная длина id',
         }),
       })

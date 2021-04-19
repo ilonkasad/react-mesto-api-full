@@ -6,6 +6,7 @@ require('dotenv').config();
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
 const cors = require('cors');
+const NotFoundError = require('./errors/not-found-err');
 const usersRouter = require('./routes/users.js');
 const cardsRouter = require('./routes/cards.js');
 const auth = require('./middlewares/auth');
@@ -14,11 +15,12 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { login, createProfile } = require('./controllers/users');
 
 const app = express();
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 
 const options = {
   origin: [
-    'http://localhost:3000',
+    'https://localhost:3000',
+    'https://domainname.student.ilona.nomoredomains.monster',
     'http://domainname.student.ilona.nomoredomains.monster',
     'https://ilonkasad.github.io',
   ],
@@ -111,8 +113,8 @@ app.use(auth);
 app.use('/', usersRouter);
 app.use('/', cardsRouter);
 
-app.use('*', (req, res) => {
-  res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
+app.use('*', () => {
+  throw new NotFoundError('Запрашиваемый ресурс не найден');
 });
 
 app.use(errorLogger);

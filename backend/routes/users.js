@@ -36,7 +36,7 @@ router.patch(
 
 router.get('/users/:_id', celebrate({
   params: Joi.object().keys({
-    _id: Joi.string().required().length(24).messages({
+    _id: Joi.string().required().hex().messages({
       'string.length': 'некорректная длина id',
     }),
   }).unknown(true),
