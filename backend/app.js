@@ -20,6 +20,7 @@ const { PORT = 3000 } = process.env;
 const options = {
   origin: [
     'https://localhost:3000',
+    'http://localhost:3000',
     'https://domainname.student.ilona.nomoredomains.monster',
     'http://domainname.student.ilona.nomoredomains.monster',
     'https://ilonkasad.github.io',

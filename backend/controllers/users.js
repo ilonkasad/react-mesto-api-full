@@ -76,7 +76,15 @@ const createProfile = (req, res, next) => {
       email: req.body.email,
       password: hash,
     }))
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send({
+      data:
+      {
+        name: user.name,
+        about: user.about,
+        avatar: user.avatar,
+        email: user.email,
+      },
+    }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         throw new QueryError('Ошибка валидации');
@@ -96,6 +104,9 @@ const createProfile = (req, res, next) => {
 
 const updateProfile = (req, res, next) => {
   const { name, about } = req.body;
+  if (name === null || about === null) {
+    throw new QueryError('Некорректные данные для обновления данных пользователя');
+  }
   User.findByIdAndUpdate(
     req.user._id,
     { name, about },
@@ -113,6 +124,9 @@ const updateProfile = (req, res, next) => {
 
 const updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
+  if (avatar === null) {
+    throw new QueryError('Неверная ссылка для обновления аватара');
+  }
   User.findByIdAndUpdate(
     req.user._id,
     { avatar },

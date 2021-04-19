@@ -17,6 +17,11 @@ const createCard = (req, res, next) => {
 };
 
 const deleteCard = (req, res, next) => {
+  console.log(req.body.owner);
+  console.log(req.body.user);
+  if (req.body.owner !== req.body.user) {
+    throw new QueryError('Невозможно удалить карточку');
+  }
   Card.findByIdAndRemove(req.params._id)
     .then((card) => {
       if (card === null) {
@@ -34,6 +39,7 @@ const deleteCard = (req, res, next) => {
 };
 
 const likeCard = (req, res, next) => {
+  console.log(req.user._id);
   Card.findByIdAndUpdate(
     req.params._id,
     { $addToSet: { likes: req.user._id } },
