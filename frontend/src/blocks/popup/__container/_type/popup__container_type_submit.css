@@ -1,0 +1,10 @@
+.popup__container_type_submit {
+  max-width: 28%;
+  margin-top: 270px;
+}
+@media screen and (max-width: 1024px) {
+  .popup__container_type_submit {
+    margin-top: 123px;
+    max-width: calc(100% - 38px);
+  }
+}

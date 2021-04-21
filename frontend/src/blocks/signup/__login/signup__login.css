@@ -1,0 +1,9 @@
+.signup__login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  height: inherit;
+  justify-content: flex-end;
+  margin-bottom: 80px;
+}

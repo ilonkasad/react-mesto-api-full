@@ -1,0 +1,18 @@
+.profile__profile-info {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 336px;
+    align-self: center;
+    margin-left: 30px;
+}
+@media screen and (max-width: 1024px) {   
+    .profile__profile-info {
+        width: 280px;
+        grid-template-columns: auto;
+        grid-template-rows:  repeat(2, min-content) auto;
+        margin: 0 auto;
+        align-items: center;
+        
+    }
+}
