@@ -21,8 +21,8 @@ const login = (req, res, next) => {
       res.cookie('jwt', token, { httpOnly: true });
       res.send({ token });
     })
-    .catch((err) => {
-      throw new AuthError({ message: err.message });
+    .catch(() => {
+      throw new AuthError('Необходима авторизация');
     })
     .catch(next);
 };
@@ -104,9 +104,6 @@ const createProfile = (req, res, next) => {
 
 const updateProfile = (req, res, next) => {
   const { name, about } = req.body;
-  if (name === null || about === null) {
-    throw new QueryError('Некорректные данные для обновления данных пользователя');
-  }
   User.findByIdAndUpdate(
     req.user._id,
     { name, about },
@@ -124,9 +121,6 @@ const updateProfile = (req, res, next) => {
 
 const updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
-  if (avatar === null) {
-    throw new QueryError('Неверная ссылка для обновления аватара');
-  }
   User.findByIdAndUpdate(
     req.user._id,
     { avatar },

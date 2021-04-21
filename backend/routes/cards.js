@@ -37,13 +37,13 @@ routerCrd.delete(
   celebrate({
     params: Joi.object()
       .keys({
-        _id: Joi.string().required().hex().message(
-          'некорректная длина id',
-        ),
+        _id: Joi.string().length(24).required().hex()
+          .message(
+            'некорректная длина id',
+          ),
       }),
     body: Joi.object()
       .keys({
-        owner: Joi.string().required(),
         user: Joi.string().required(),
       })
       .unknown(true),
@@ -56,9 +56,10 @@ routerCrd.put(
   celebrate({
     params: Joi.object()
       .keys({
-        _id: Joi.string().required().hex().messages({
-          'string.length': 'некорректная длина id',
-        }),
+        _id: Joi.string().length(24).required().hex()
+          .messages({
+            'string.length': 'некорректная длина id',
+          }),
       })
       .unknown(true),
   }),
@@ -70,9 +71,10 @@ routerCrd.delete(
   celebrate({
     params: Joi.object()
       .keys({
-        _id: Joi.string().required().hex().messages({
-          'string.length': 'некорректная длина id',
-        }),
+        _id: Joi.string().length(24).required().hex()
+          .messages({
+            'string.length': 'некорректная длина id',
+          }),
       })
       .unknown(true),
   }),

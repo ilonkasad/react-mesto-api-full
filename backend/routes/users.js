@@ -16,13 +16,13 @@ router.patch(
   celebrate({
     body: Joi.object()
       .keys({
-        name: Joi.string().min(2).max(30)
+        name: Joi.string().min(2).max(30).required()
           .messages({
             'string.min': 'Имя должно содержать больше 2 символов',
             'string.max': 'Имя должно содержать менее 30 символов',
             'string.empty': 'Не указано имя пользователя',
           }),
-        about: Joi.string().min(2).max(30)
+        about: Joi.string().min(2).max(30).required()
           .messages({
             'string.min': 'Поле информация о пользователе должно содержать больше 2 символов',
             'string.max': 'Поле информация о пользователе должно содержать менее 30 символов',
@@ -36,9 +36,10 @@ router.patch(
 
 router.get('/users/:_id', celebrate({
   params: Joi.object().keys({
-    _id: Joi.string().required().hex().messages({
-      'string.length': 'некорректная длина id',
-    }),
+    _id: Joi.string().length(24).required().hex()
+      .messages({
+        'string.length': 'некорректная длина id',
+      }),
   }).unknown(true),
 }), getProfile);
 
@@ -47,7 +48,7 @@ router.patch(
   celebrate({
     body: Joi.object()
       .keys({
-        avatar: Joi.string().pattern(new RegExp(/(http|https):\/\/(www\.)?(\S+)\.([a-zA-Z])+(\/)?(\w-\._~:\/\?#\[\]@!\$&’\(\)\*\+,;=)?/))
+        avatar: Joi.string().required().pattern(new RegExp(/(http|https):\/\/(www\.)?(\S+)\.([a-zA-Z])+(\/)?(\w-\._~:\/\?#\[\]@!\$&’\(\)\*\+,;=)?/))
           .message('Неверно указана ссылка для аватара пользователя')
           .messages({
             'string.empty': 'Не указана ссылка для аватара пользователя',
