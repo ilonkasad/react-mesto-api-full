@@ -1,0 +1,9 @@
+.popup__container_type_avatar {
+  margin: auto;
+}
+@media screen and (max-width: 1024px) {
+  .popup__container_type_avatar {
+    margin-top: 123px;
+    max-width: calc(100% - 38px);
+  }
+}

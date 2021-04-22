@@ -1,0 +1,11 @@
+.main-page {
+    position: relative;
+    max-width: 1600px;
+    margin: 0 auto;
+    background:  #000000;
+    background-color: #000000;
+    color: #000000;
+    font-family: 'Inter', 'Arial', sans-serif;
+    z-index: 0;
+    
+}
