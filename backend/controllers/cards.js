@@ -1,6 +1,7 @@
 const Card = require('../models/card');
 const NotFoundError = require('../errors/not-found-err');
-const QueryError = require('../errors/not-found-err');
+const QueryError = require('../errors/query-err');
+const DelError = require('../errors/del-err');
 
 const getCards = (req, res, next) => {
   Card.find({})
@@ -17,15 +18,20 @@ const createCard = (req, res, next) => {
 };
 
 const deleteCard = (req, res, next) => {
-  Card.findByIdAndRemove(req.params._id)
+  Card.findById(req.params._id)
     .then((card) => {
       if (card === null) {
         throw new NotFoundError('Карточка не найдена');
       }
-      if (card.owner.toString() !== req.body.user.toString()) {
-        throw new QueryError('Невозможно удалить карточку');
+      if (card.owner.toString() !== req.user._id.toString()) {
+        throw new DelError('Невозможно удалить карточку');
       }
-      res.send({ data: card });
+      Card.findByIdAndRemove(req.params._id)
+        .then(() => {
+          res.send();
+        })
+        .catch((err) => { next(err); })
+        .catch(next);
     })
     .catch((err) => {
       if (err.kind === 'ObjectId') {

@@ -41,10 +41,6 @@ routerCrd.delete(
           .message(
             'некорректная длина id',
           ),
-      }),
-    body: Joi.object()
-      .keys({
-        user: Joi.string().required(),
       })
       .unknown(true),
   }),
