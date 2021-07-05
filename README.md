@@ -1,11 +1,33 @@
-# react-mesto-api-full
+### Project: Mesto
 
-IP-адрес сервера : 84.252.128.195
+Description: Educational project. Focused on the study of technologies:	HTML, CSS, БЭМ, Git, JavaScript, React, Webpack, Nginx, Node.js, Express.js
+Application for the ability to add, delete cards with pictures, put likes on cards. The functionality includes authorization, registration and user authentication. The project is dedicated to learning how to create an API for interacting with the frontend. 
 
-Домен: http://domainname.student.ilona.nomoredomains.monster/
+### Developing locally (Quick Start)
+If you want to work on locally:
 
-Домен api: http://api.domainname.ilona.nomoredomains.monster/
+Fork this repository and clone your version of the repo 
+1. For \react-mesto-api-full\backend
+Install npm dependencies
+```
+npm install
+```
+Start build in the watch mode. This command will start microbundle in watch mode, meaning that everytime you make changes to the source will be compiled to dist folder
+```
+npm run dev
+```
+If everything went well, server running on http://localhost:3000
 
-Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`. 
-  
-Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
+2. For \react-mesto-api-full\frontend
+
+Install npm dependencies
+```
+npm install
+```
+Start build in the watch mode. This command will start microbundle in watch mode, meaning that everytime you make changes to the source will be compiled to dist folder
+```
+npm run build
+npm run start
+```
+If everything went well, server running on http://localhost:3001
+
